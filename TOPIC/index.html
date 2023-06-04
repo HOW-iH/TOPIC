@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./TOPIC.css">
+    <script src="main.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="first">
+      <div id="title1">
+        <!--logo顯示區-->
+        <div id="logo">
+          <font face="fantasy" class="yellow">PC</font>
+          <font face="fantasy" class="green">way</font>
+        </div>
+        <div id="button" onclick="onTopClick();menuout()">
+          <font face="fantasy" class="yellow">開始</font>
+        </div>
+      </div>
+
+      <div id="three_D1">
+        <!--3D網頁顯示區-->
+        <canvas id="canvas3d"></canvas>
+        <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+        <script type="importmap">
+          {
+            "imports": {
+              "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@0.9.287/build/runtime.js"
+            }
+          }
+        </script>
+        <script type="module" src="./src/main.js"></script>
+      </div>
+
+      <div id="title2" >
+        <div id="need" >
+            <input id="Budget" class="underLineStyle" maxlength="6" placeholder="預算金額..." onkeyup="value=value.replace(/[^\d]/g,'') "><!--有字數和只能輸入數字限制-->
+
+            <select name="pets" id="use" required>
+              <option value="" disabled selected>選擇使用需求...</option>
+              <option  value="1" >文書</option>
+              <option  value="2" >遊戲</option>
+              <option  value="3" >剪輯</option>
+            </select>
+            
+              <select name="pets" id="choose_PC" required onchange="changetest()">
+                <option value="" disabled selected>選擇主機樣式...</option>
+                <option  value="1" >Montech Air 1000 LITE (白)$1590</option>
+                <option  value="2" >Montech Air 1000 LITE (黑)$1490</option>
+                <option  value="3" >Montech Air 100 LITE (白)$1290</option>
+                <option  value="4" >Montech Air 100 LITE (黑)$1190</option>
+                <option  value="5" >全漢 CST130 Basic (黑)$1190</option>
+                <option  value="6" >全漢 CST130 Basic (白)$1090</option>
+              </select>
+
+            <div id="PCthreeD">
+              <canvas name="PC3D" id="one3d"></canvas>
+                <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+                <script id="PCurl" type="importmap">
+                  {
+                    "imports": {
+                      "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@0.9.354/build/runtime.js"
+                    }
+                  }
+                </script>
+              <script id="link" src="./src/one.js" type="module"></script>
+            </div>
+        
+        </div>
+      </div>
+      <div id="three_D2">
+          <button onclick= formula()>
+            <font class="yellow">開始</font></button><!--測試用按鈕------------------------------------------------------------------------------------------------------------>
+      </div>
+    </div>
+    <script>/*JS位置*/
+      var three_D1 = 'one3d';/*PC3D 變數*/
+
+      function formula(){/*算式按下後執行*/
+        var Budgetvalue = document.getElementById("Budget").value;/*預算*/
+        var usevalue = document.getElementById("use").value;/*需求*/
+        var choose_PCvalue = document.getElementById("choose_PC").value;/*主機選擇*/
+        if ( Budgetvalue == ""){/*檢查預算是否為空值*/
+          alert("需填寫金額");
+        }else if (usevalue == "" ){
+          alert("需選擇需求");/*檢查是否有選擇需求*/
+        }else if (choose_PCvalue == "" ){
+          alert("需選擇主機");/*檢查是否有選擇主機*/
+        }else{
+          /*此連接後端算式ˉ*/
+        }
+      }
+
+      /*PCchee下拉選單開始*/
+      function changetest(){
+        var PC_threeD = document.getElementById("choose_PC").value; /*獲得html下拉是選單數值value*/
+        var importScript = document.getElementById("PCurl");/*獲取ID為PCurl的內容*/
+        switch(PC_threeD) {
+          
+          case "1": /*複製時只需更改src,ID,網址,變數 名稱*/
+            document.getElementById("link").src = "./src/one.js";/*更改#like的src路徑*/
+            document.getElementById(three_D1).id = 'one3d';/*改變ID名稱*/
+            importScript.textContent = 
+              `
+                {
+                  "imports": {
+                    "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@0.9.354/build/runtime.js"
+                  }
+                }
+              ;`
+            three_D1 = 'one3d';/*將變數_D1改變成'tow3d'*/
+          break;
+
+          case "2": /*複製時只需更改src,ID,網址,變數 名稱*/
+            document.getElementById("link").src = "./src/tow.js";/*更改#like的src路徑*/
+            document.getElementById(three_D1).id = 'tow3d';/*改變ID名稱*/
+            importScript.textContent = 
+              `
+                {
+                  "imports": {
+                    "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@0.9.357/build/runtime.js"
+                  }
+                }
+              ;`
+            three_D1 = 'tow3d';/*將變數_D1改變成'tow3d'*/
+          break;
+
+          case "3": /*複製時只需更改src,ID,網址,變數 名稱*/
+            document.getElementById("link").src = "./src/three.js";/*更改#like的src路徑*/
+            document.getElementById(three_D1).id = 'three3d';/*改變ID名稱*/
+            importScript.textContent = 
+              `
+                {
+                  "imports": {
+                    "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@0.9.297/build/runtime1.js"
+                  }
+                }
+              ;`
+            three_D1 = 'three3d';/*將變數_D1改變成'three3d'*/
+          break;
+
+        }
+      }
+      /*PCchee下拉選單結束*/
+
+      function onTopClick(){/*頁面下滑效果*/
+        document.getElementById('title2').scrollIntoView({
+          block:'start',
+          inline: 'nearest',
+          behavior: 'smooth'
+        })
+      }
+    </script>
+    <script src="../web.js"></script>
+  </body>
+</html>

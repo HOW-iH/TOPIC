@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.317.0",
+    "aws-sdk": "^2.729.0",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "jquery": "^3.6.4",
+    "mock-aws-s3": "^4.0.2",
+    "mysql": "^2.18.1",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "path": "^0.12.7",
+    "require.js": "^1.0.0",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "nock": "^13.3.0",
+    "nodemon": "^2.0.22"
+  },
+  
+  "scripts": {
+    "start": "node TOPIC.js"
+  }
+}
